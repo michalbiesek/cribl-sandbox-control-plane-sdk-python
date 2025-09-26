@@ -18,9 +18,8 @@ RUN apt-get update && apt-get install -y \
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# Copy requirements file and install Python dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# Note: Dependencies will be installed via postCreateCommand
+# This ensures they're installed in the correct user context
 
 # Set the default command
 CMD ["python", "main.py"]
